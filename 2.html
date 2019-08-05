@@ -1,0 +1,44 @@
+<html>
+ <head>
+ 
+	<script src="jquery-3.4.1.min.js"></script>
+	<script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+	 <script>
+		 this.pay = function () {
+    var widget = new cp.CloudPayments({language:"ru-RU"});
+    widget.charge({ // options
+            publicId: 'pk_729c20998d6b0571e963833bd1660',  //id из личного кабинета
+            description: 'Оплата проекта дома', //назначение
+            amount: 500, //сумма
+            currency: 'RUB', //валюта
+            invoiceId: '1234567', //номер заказа  (необязательно)
+            accountId: 'user@example.com', //идентификатор плательщика (необязательно)
+            skin: "mini", //дизайн виджета
+            data: {
+                myProp: 'myProp value' //произвольный набор параметров
+            }
+        },
+        function (options) { 
+	    $.ajax({
+  type: "POST",
+  url: "https://bots.ikigai.art/api/bot/action/DBrHGLQ7O/C-CcDWD5CTCpB7UEBOCYC3SmrBfCPDYDoxDKBSeB9BVwlCKCDDgChCNDEGCeBPmD", 
+data: {
+	"platform": "tg",
+	"users": "122612664",
+}
+}).done(function( msg ) {
+  });
+         
+        },
+        function (reason, options) { // fail
+            //действие при неуспешной оплате
+        });
+};    
+	 </script>
+
+</head>
+ 
+<body onload="pay()">
+</body>
+ 
+</html>
